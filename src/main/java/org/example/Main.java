@@ -40,6 +40,7 @@ public class Main {
                 s.next();
             }
         }
+        s.close();
     }
 
     private static void displayMenu() {
@@ -87,4 +88,5 @@ public class Main {
             System.out.println("Error: Division by zero.");
         }
     }
+
 }
