@@ -5,14 +5,14 @@ import java.util.Scanner;
 
 public class Main {
 
-    private static Scanner s = new Scanner(System.in);
+    private static Scanner in = new Scanner(System.in);
 
     public static void main(String[] args) {
         while (true) {
             displayMenu();
 
             try {
-                int operation = s.nextInt();
+                int operation = in.nextInt();
 
                 if (operation == 5) {
                     System.out.println("Exiting the program");
@@ -20,15 +20,15 @@ public class Main {
                 }
 
                 System.out.println("Enter first number: ");
-                int num1 = s.nextInt();
+                int num1 = in.nextInt();
 
                 System.out.println("Enter second number: ");
-                int num2 = s.nextInt();
+                int num2 = in.nextInt();
 
                 performOperation(operation,num1,num2);
 
                 System.out.println("Do you want to continue? (yes/no): ");
-                String yesno = s.next().toLowerCase();
+                String yesno = in.next().toLowerCase();
 
                 if (!yesno.equals("yes")) {
                     System.out.println("Exiting the program");
@@ -37,10 +37,10 @@ public class Main {
 
             } catch (InputMismatchException e) {
                 System.out.println("Error: Invalid input. Please enter a valid integer.");
-                s.next();
+                in.next();
             }
         }
-        s.close();
+        in.close();
     }
 
     private static void displayMenu() {
