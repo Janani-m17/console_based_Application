@@ -4,15 +4,14 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
 
+    private static Scanner s = new Scanner(System.in);
+
+    public static void main(String[] args) {
         while (true) {
-            System.out.println("Simple Calculator Application (+-*/)");
-            System.out.println("Choose Operation : \n1. Addition \n2. Subtraction \n3. Multiplication \n4. Division \n5. Exit");
+            displayMenu();
 
             try {
-                System.out.println("Enter your choice: ");
                 int operation = s.nextInt();
 
                 if (operation == 5) {
@@ -26,27 +25,7 @@ public class Main {
                 System.out.println("Enter second number: ");
                 int num2 = s.nextInt();
 
-                switch (operation) {
-                    case 1:
-                        System.out.println("Result: " + (num1+num2));
-                        break;
-                    case 2:
-                        System.out.println("Result: " + (num1-num2));
-                        break;
-                    case 3:
-                        System.out.println("Result: " + (num1*num2));
-                        break;
-                    case 4:
-                        if (num2 != 0) {
-                            System.out.println("Result: Quotient: " + ((double) num1/num2));
-                            System.out.println("Remainder: " + ((double)num1%num2));
-                        } else {
-                            System.out.println("Error: Division by zero.");
-                        }
-                        break;
-                    default:
-                        System.out.println("Enter a valid operation number.");
-                }
+                performOperation(operation,num1,num2);
 
                 System.out.println("Do you want to continue? (yes/no): ");
                 String yesno = s.next().toLowerCase();
@@ -60,6 +39,52 @@ public class Main {
                 System.out.println("Error: Invalid input. Please enter a valid integer.");
                 s.next();
             }
+        }
+    }
+
+    private static void displayMenu() {
+        System.out.println("Simple Calculator Application (+-*/)");
+        System.out.println("Choose Operation : \n1. Addition \n2. Subtraction \n3. Multiplication \n4. Division \n5. Exit");
+        System.out.println("Enter your choice: ");
+    }
+
+    private static void performOperation(int operation,int num1,int num2) {
+        switch (operation) {
+            case 1:
+                System.out.println("Result: " + add(num1,num2));
+                break;
+            case 2:
+                System.out.println("Result: " + subtract(num1,num2));
+                break;
+            case 3:
+                System.out.println("Result: " + multiply(num1,num2));
+                break;
+            case 4:
+                divide(num1,num2);
+                break;
+            default:
+                System.out.println("Enter a valid operation number.");
+        }
+    }
+
+    private static int add(int a,int b) {
+        return a+b;
+    }
+
+    private static int subtract(int a,int b) {
+        return a-b;
+    }
+
+    private static int multiply(int a,int b) {
+        return a*b;
+    }
+
+    private static void divide(int a,int b) {
+        if (b != 0) {
+            System.out.println("Result: Quotient: " + ((double)a/b));
+            System.out.println("Remainder: " + ((double)a%b));
+        } else {
+            System.out.println("Error: Division by zero.");
         }
     }
 }
